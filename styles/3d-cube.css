@@ -1,0 +1,135 @@
+@charset "utf-8";
+
+/*
+	CSS Document for the 3D Transforms (3D-Cube) web page
+	Script date: Oct 12, 2017;
+	Developed by: Tung Pham IPD12;
+*/
+
+body > form {
+	width: 500px;
+	margin: 50px auto;
+}
+
+#container {
+	width: 300px;
+	height: 300px;
+	margin: 100px auto;
+	perspective: 1100px;
+	perspective-origin: -50% -50%;
+}
+
+.cube {
+	/* Vendor specific prefixes */
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	-ms-transform-style: preserve-3d;
+	-o-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+
+	position: relative;
+	margin: 0;
+	left: 15%;
+	transition: 2s;
+	transform: translateZ(-150px);
+}
+
+.cube div {
+	width: 298px;
+	height: 188px;
+	background: rgba(0, 0, 0, 0.8);
+	position: absolute;
+	border: 1px solid #fff;
+	text-align: center;
+	padding-top: 110px;
+	color: #888;
+	font: 2em 'Times New Roman', Times, Serif;
+	text-transform: uppercase;
+}
+
+div.front {
+	transform: translateZ(150px);
+	opacity: 0.8;
+	background: linear-gradient(to right, red, white 33%, white 66%, blue);
+}
+
+div.left {
+	transform: rotateY(-90deg) translateZ(150px);
+	opacity: 0.8;
+	background: linear-gradient(black, red, yellow);
+}
+
+div.right {
+	transform: rotateY(90deg) translateZ(150px);
+	opacity: 0.8;
+	background: linear-gradient(to right, green, white, red);
+}
+
+div.back {
+	transform: rotateY(180deg) translateZ(150px);
+	opacity: 0.8;
+	background: linear-gradient(#f40, white, blue);
+}
+
+div.top {
+	transform: rotateX(90deg) translateZ(150px);
+	opacity: 0.8;
+	background: linear-gradient(to right, black, red, yellow);
+}
+
+div.bottom {
+	transform: rotateX(-90deg) translateZ(150px);
+	opacity: 0.8;
+	background: linear-gradient(#f33, yellow, #f33);
+}
+
+/* Styling all label */
+label {
+	cursor: pointer;
+	background: #ddd;
+	border-radius: 5px;
+	padding: 10px;
+	text-align: center;
+	margin-right: 5px;
+	text-transform: uppercase;
+	box-shadow: 5px 5px 5px #999;
+}
+
+label:hover {
+	background: #000;
+	color: #fff;
+}
+
+input {
+	display: none;
+}
+
+input:checked + label {
+	color: orange;
+	font-weight: 600;
+	background: #3de;
+}
+
+input[value="front"]:checked ~ #container .cube {
+	transform: translateZ(-150px) rotateY(0deg);
+}
+
+input[value="left"]:checked ~ #container .cube {
+	transform: translateZ(-150px) rotateY(90deg);
+}
+
+input[value="right"]:checked ~ #container .cube {
+	transform: translateZ(-150px) rotateY(-90deg);
+}
+
+input[value="top"]:checked ~ #container .cube {
+	transform: translateY(150px) rotateX(-90deg);
+}
+
+input[value="back"]:checked ~ #container .cube {
+	transform: translateZ(-150px) rotateY(180deg);
+}
+
+input[value="bottom"]:checked ~ #container .cube {
+	transform: translateY(150px) translateZ(-300px) rotateX(90deg);
+}
